@@ -18,6 +18,10 @@ void CLCD_VidSendString(u8 * Copy_Pu8Str);
 
 void CLCD_VidLcdClear(void);
 
+void CLCD_VidSendNumber(u16 CLCD_u16Number,u8 * CLCD_u8PCharArr);
+
+void CLCD_VidSendFloatNumber(f64 CLCD_u16Number,u8 * CLCD_u8PCharArr);
+
 
 
 #endif

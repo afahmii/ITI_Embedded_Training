@@ -1,5 +1,5 @@
-#include "LIB/Datatypes.h"
-#include "LIB/Bit_Operations.h"
+#include "../../LIB/Datatypes.h"
+#include "../../LIB/Bit_Operations.h"
 #include "DIO_Private.h"
 #include "DIO_Interface.h"
 

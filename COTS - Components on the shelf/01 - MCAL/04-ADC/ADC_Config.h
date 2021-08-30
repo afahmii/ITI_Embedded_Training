@@ -1,5 +1,5 @@
 #ifndef _ADC_CONFIG_H_
-#define_ADC_CONFIG_H_
+#define _ADC_CONFIG_H_
 
 
 

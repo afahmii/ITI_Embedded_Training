@@ -1,11 +1,13 @@
 /*include std and global libiraries*/
 
-#include "../Bit_Operations.h"
-#include "../Datatypes.h"
+#include "../../LIB/Bit_Operations.h"
+#include "../../LIB/Datatypes.h"
 #include <util/delay.h>
+#include <string.h>
+#include <stdlib.h>
 
 /*MCAL Layer*/
-#include "../MCAL/DIO_Interface.h"/*Linking HAL TO MCAL*/
+#include "../../MCAL/DIO/DIO_Interface.h"/*Linking HAL TO MCAL*/
 
 /*OWN Program Libirary*/
 #include "CLCD_Interface.h"
@@ -94,3 +96,16 @@ void CLCD_VidSendString(u8 * Copy_Pu8Str){
 void CLCD_VidLcdClear(void){
 	CLCD_VidSendCommand(1);
 }
+void CLCD_VidSendNumber(u16 CLCD_u16Number,u8 * CLCD_u8PCharArr){
+
+	sprintf(CLCD_u8PCharArr,CLCD_u16Number);
+	CLCD_VidSendString(CLCD_u8PCharArr);
+
+}
+void CLCD_VidSendFloatNumber(f64 CLCD_u16Number,u8 * CLCD_u8PCharArr){
+
+	snprintf(CLCD_u8PCharArr,6,"%f",CLCD_u16Number);
+	CLCD_VidSendString(CLCD_u8PCharArr);
+
+}
+

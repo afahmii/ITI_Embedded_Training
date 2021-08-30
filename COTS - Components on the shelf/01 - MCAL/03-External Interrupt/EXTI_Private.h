@@ -15,14 +15,14 @@
 
 /*Enable INT0, INT1, INT2 Interrupts*/
 #define GICR 			*((volatile u8*)0x5B)
-#deinfe GICR_INT1_PIN 			7
-#deinfe GICR_INT0_PIN 			6 
-#deinfe GICR_INT2_PIN 			5
+#define GICR_INT1_PIN 			7
+#define GICR_INT0_PIN 			6
+#define GICR_INT2_PIN 			5
 
 /*Enable INT0, INT1, INT2 Interrupts Flags*/
 #define GIFR 			*((volatile u8*)0x5A)
-#deinfe GIFR_INTF1_PIN 7
-#deinfe GIFR_INTF0_PIN 6
-#deinfe GIFR_INTF2_PIN 5
+#define GIFR_INTF1_PIN 7
+#define GIFR_INTF0_PIN 6
+#define GIFR_INTF2_PIN 5
 
 #endif /*_EXTI_PRIVATE_H_*/

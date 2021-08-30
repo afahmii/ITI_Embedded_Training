@@ -2,7 +2,6 @@
 #define KPD_INTERFACE_H_
 
 
-void 
 
 
 
@@ -10,7 +9,7 @@ void
 u8 KPD_u8GetPressedKey(void);
 
 
-
+u16 KPD_u16KPDCalc (u8* KPD_Pu8CharArr);
 
 
 
