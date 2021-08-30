@@ -1,0 +1,20 @@
+06:59:12 **** Incremental Build of configuration Debug for project Day9_6.Switching_LED_Animation ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c:11:1: warning: "F_CPU" redefined
+<command-line>: warning: this is the location of the previous definition
+In file included from ../main.c:12:
+c:/imt_sdk_win_64/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util\delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:15: error: expected identifier or '(' before 'volatile'
+../main.c:15: error: expected ')' before '(' token
+../main.c:16: error: expected identifier or '(' before 'volatile'
+../main.c:16: error: expected ')' before '(' token
+../main.c:17: warning: return type of 'main' is not 'int'
+../main.c: In function 'main':
+../main.c:19: warning: suggest parentheses around arithmetic in operand of |
+make: *** [main.o] Error 1
+
+06:59:12 Build Finished (took 230ms)
+

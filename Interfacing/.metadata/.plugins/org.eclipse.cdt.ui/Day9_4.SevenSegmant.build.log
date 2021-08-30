@@ -1,0 +1,43 @@
+03:29:58 **** Incremental Build of configuration Debug for project Day9_4.SevenSegmant ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c:11:1: warning: "F_CPU" redefined
+<command-line>: warning: this is the location of the previous definition
+In file included from ../main.c:12:
+c:/imt_sdk_win_64/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util\delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:16: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: Day9_4.SevenSegmant.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Day9_4.SevenSegmant.map -mmcu=atmega16 -o "Day9_4.SevenSegmant.elf"  ./main.o   
+Finished building target: Day9_4.SevenSegmant.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Day9_4.SevenSegmant.elf  >"Day9_4.SevenSegmant.lss"
+Finished building: Day9_4.SevenSegmant.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Day9_4.SevenSegmant.elf  "Day9_4.SevenSegmant.hex"
+Finished building: Day9_4.SevenSegmant.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 Day9_4.SevenSegmant.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    6118 bytes (37.3% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+03:29:59 Build Finished (took 679ms)
+

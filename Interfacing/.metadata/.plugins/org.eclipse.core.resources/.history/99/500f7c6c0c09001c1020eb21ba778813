@@ -1,0 +1,33 @@
+/*
+ * main.c
+
+ *
+ *  Created on: Aug 29, 2021
+ *      Author: AbdElRahman
+ */
+/*Global Libraries*/
+#include "LIB/Datatypes.h"
+#include "LIB/Bit_Operations.h"
+#include <util/delay.h>
+
+/*MCAL*/
+#include "MCAL/UART/UART_Interface.h"
+#include "MCAL/UART/UART_Private.h"
+
+
+#define ArrLen 20
+extern st_uart_init UART_INIT;
+extern st_uart_int UART_INT;
+void main (void){
+
+	u8 arr[] = {'A','B','D','E','L','R','A','H','M','A','N',NULL};
+	u8 arr1[ArrLen]= {0};
+	UART_VidTransmitterEnable();
+	UART_VidReceiverEnable();
+	UART_Vidinit(&UART_INIT);
+	//UART_VidTransmit(UART_u8Receive());
+	UART_VidRecString(arr1,ArrLen);
+	UART_VidSendString(arr1);
+	while(1){
+	}
+}

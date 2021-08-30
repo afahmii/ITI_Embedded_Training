@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;Day19_09_USART&apos; to &apos;Day19_09_UART&apos;" description="Rename resource &apos;Day19_09_USART&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/Day19_09_USART" name="Day19_09_UART" stamp="1630265168902" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;Day19_09_UART&apos; to &apos;Day19_09_USART&apos;" description="Rename resource &apos;Day19_09_UART&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/Day19_09_UART" name="Day19_09_USART" stamp="1630265192396" updateReferences="true"/>
+</session>

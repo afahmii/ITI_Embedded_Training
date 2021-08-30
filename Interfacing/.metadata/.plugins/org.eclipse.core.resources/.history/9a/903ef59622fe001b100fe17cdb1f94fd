@@ -1,0 +1,23 @@
+#include <avr/io.h>
+
+#include <util\delay.h>
+#define CPU_F 8000000
+
+
+void main (void)
+{
+	DDRA = 0b00000001;
+	PORTA = 0b00000001;
+	PINA = 0b00000010;
+	while(1)
+	{
+	//	char x = PINA;
+	//	while(((PINA>>2) =& 1)!= 0)
+		{ 
+		PORTA = 0b00000000;
+		_delay_ms(1000);
+		PORTA = 0b00000001;
+		_delay_ms(1000);
+		}
+	}
+}		

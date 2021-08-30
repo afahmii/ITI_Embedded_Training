@@ -1,0 +1,20 @@
+02:53:52 **** Incremental Build of configuration Debug for project Day17_Day18_08_TIMER1_Servo_ADC_ICU ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Day17_Day18_08_TIMER1_Servo_ADC_ICU.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:   11948 bytes (36.5% Full)
+(.text + .data + .bootloader)
+
+Data:         67 bytes (3.3% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+02:53:53 Build Finished (took 1s.82ms)
+

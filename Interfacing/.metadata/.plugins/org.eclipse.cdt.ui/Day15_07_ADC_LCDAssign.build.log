@@ -1,0 +1,20 @@
+00:36:34 **** Incremental Build of configuration Debug for project Day15_07_ADC_LCDAssign ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Day15_07_ADC_LCDAssign.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    8980 bytes (27.4% Full)
+(.text + .data + .bootloader)
+
+Data:         18 bytes (0.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+00:36:35 Build Finished (took 240ms)
+

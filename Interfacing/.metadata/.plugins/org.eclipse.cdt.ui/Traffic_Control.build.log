@@ -1,0 +1,33 @@
+06:31:04 **** Incremental Build of configuration Debug for project Traffic_Control ****
+make all 
+Building target: Traffic_Control.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Traffic_Control.map -mmcu=atmega32 -o "Traffic_Control.elf"  ./main.o   
+Finished building target: Traffic_Control.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Traffic_Control.elf  >"Traffic_Control.lss"
+Finished building: Traffic_Control.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Traffic_Control.elf  "Traffic_Control.hex"
+Finished building: Traffic_Control.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Traffic_Control.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    3626 bytes (11.1% Full)
+(.text + .data + .bootloader)
+
+Data:         22 bytes (1.1% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+06:31:05 Build Finished (took 496ms)
+

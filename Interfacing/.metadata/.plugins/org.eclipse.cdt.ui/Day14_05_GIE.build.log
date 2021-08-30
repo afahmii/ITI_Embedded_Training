@@ -1,0 +1,15 @@
+16:53:09 **** Incremental Build of configuration Debug for project Day14_05_GIE ****
+make all 
+Building file: ../GIE_Program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"GIE_Program.d" -MT"GIE_Program.o" -c -o "GIE_Program.o" "../GIE_Program.c"
+Finished building: ../GIE_Program.c
+ 
+Building target: Day14_05_GIE.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Day14_05_GIE.map -mmcu=atmega32 -o "Day14_05_GIE.elf"  ./GIE_Program.o   
+c:/imt_sdk_win_64/imt_sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o:(.init9+0x0): undefined reference to `main'
+make: *** [Day14_05_GIE.elf] Error 1
+
+16:53:09 Build Finished (took 308ms)
+

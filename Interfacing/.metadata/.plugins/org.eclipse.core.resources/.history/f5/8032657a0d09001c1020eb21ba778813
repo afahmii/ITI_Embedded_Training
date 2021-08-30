@@ -1,0 +1,179 @@
+/*
+ * main.c
+
+ *
+ *  Created on: Aug 29, 2021
+ *      Author: AbdElRahman
+ */
+/*Global Libraries*/
+#include "LIB/Datatypes.h"
+#include "LIB/Bit_Operations.h"
+#include <util/delay.h>
+
+/*MCAL*/
+#include "MCAL/UART/UART_Interface.h"
+#include "MCAL/UART/UART_Private.h"
+
+#define Code_Select 2
+
+#if Code_Select == 1
+
+#define ArrLen 20 /*Select Array Length*/
+extern st_uart_init UART_INIT;
+extern st_uart_int UART_INT;
+void main (void){
+	/*Send myname as a string*/
+	u8 arr[] = {'A','B','D','E','L','R','A','H','M','A','N',NULL};
+	u8 arr1[ArrLen]= {0};				/*Array to store Received String*/
+	UART_VidTransmitterEnable();		/*Enable TX*/
+	UART_VidReceiverEnable();			/*Enable RX*/
+	UART_Vidinit(&UART_INIT);			/*UART INIT*/
+//UART_VidTransmit(UART_u8Receive());	/*Send the Received Char*/
+	UART_VidRecString(arr1,ArrLen);		/*Receive String in arr1*/
+	UART_VidSendString(arr1);			/*Display arr1*/
+	while(1){}
+}
+#elif Code_Select == 2
+
+
+#define LED_BLINK        0
+#define LED_SHIFT_LEFT   1
+#define LED_SHIFT_RIGHT  2
+#define LED_CONVERGING   3
+#define LED_DIVERFING    4
+#define LED_PING_PONG    5
+#define LED_SNAKE        6
+#define LED_CONV_DIV     7
+
+u8 switch_state ;
+s8 right =4 ,left =3;
+s8 first =0 ,last =7;
+s8 snake_c ;
+void main ()
+{
+	/* Set PORTD as output */
+	DIO
+	/* Set A0,A1,A2 as input */
+	CLR_BIT(DDRA , 0);
+	CLR_BIT(DDRA , 1);
+	CLR_BIT(DDRA , 2);
+	while(1)
+	{
+		switch_state = GET_BIT(PINA , 0 ) |
+				       (GET_BIT(PINA , 1 ) << 1 )|
+					   (GET_BIT(PINA , 2 ) << 2);
+
+		switch (switch_state)
+		{
+			case LED_BLINK       :
+				PORTD = ~PORTD;
+				_delay_ms(300);
+				break;
+
+			case  LED_SHIFT_RIGHT:
+				for(u8 i = 0 ; i < 8 ; i++)
+				{
+					PORTD = 0 ;
+					SET_BIT(PORTD , i);
+					_delay_ms(250);
+				}
+				break;
+
+			case LED_SHIFT_LEFT :
+				for(s8 i = 7 ; i >= 0 ; i--)
+				{
+					PORTD = 0 ;
+					SET_BIT(PORTD , i);
+					_delay_ms(250);
+				}
+				break;
+
+			case LED_CONVERGING  :
+				PORTD = 0 ;
+				_delay_ms(300);
+				for(u8 i = 0 ; i < 4 ; i++)
+				{
+					SET_BIT(PORTD , first);
+					SET_BIT(PORTD , last);
+					last --;
+					first++;
+					_delay_ms(300);
+				}
+				first = 0 ;
+				last = 7 ;
+				break;
+
+
+			case LED_DIVERFING   :
+				PORTD = 0 ;
+				_delay_ms(300);
+				for(u8 i = 0 ; i < 4 ; i++)
+				{
+					SET_BIT(PORTD , right);
+					SET_BIT(PORTD , left);
+					left --;
+					right++;
+					_delay_ms(300);
+				}
+				right = 4 ;
+				left = 3 ;
+				break;
+
+			case LED_PING_PONG   :
+				for(u8 i = 0 ; i < 8 ; i++)
+				{
+					PORTD = 0 ;
+					SET_BIT(PORTD , i);
+					_delay_ms(250);
+				}
+				for(s8 i = 7 ; i >= 0 ; i--)
+				{
+					PORTD = 0 ;
+					SET_BIT(PORTD , i);
+					_delay_ms(250);
+				}
+
+				break;
+
+			case LED_SNAKE       :
+				PORTD = 0 ;
+				for(u8 i = 0 ; i < 8 ; i++)
+				{
+					SET_BIT(PORTD , i);
+					_delay_ms(300);
+				}
+				break;
+
+
+			case LED_CONV_DIV    :
+				for(u8 i = 0 ; i < 4 ; i++)
+				{
+					PORTD = 0 ;
+					SET_BIT(PORTD , first);
+					SET_BIT(PORTD , last);
+					last --;
+					first++;
+					_delay_ms(300);
+				}
+				for(u8 i = 0 ; i < 4 ; i++)
+				{
+					PORTD = 0 ;
+					SET_BIT(PORTD , right);
+					SET_BIT(PORTD , left);
+					left --;
+					right++;
+					_delay_ms(300);
+				}
+				right = 4 ;
+				left = 3 ;
+				first = 0 ;
+				last = 7 ;
+
+				break;
+		}
+
+	}
+
+}
+
+#endif

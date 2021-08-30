@@ -1,0 +1,49 @@
+/*
+ * main.c
+ *
+ *  Created on: Aug 24, 2021
+ *      Author: AbdElRahman
+ */
+#include "LIB/Bit_Operations.h"
+#include "LIB/Datatypes.h"
+#include "util/delay.h"
+
+#include "MCAL/DIO/DIO_Interface.h"
+
+#include "MCAL/GIE/GIE_Interface.h"
+#include "MCAL/ADC/ADC_Interface.h"
+#include "MCAL/Timer/Timer_Interface.h"
+
+#include "HAL/LCD/CLCD_Interface.h"
+
+#define Code_Select 1
+
+#if Code_Select == 1
+/*			Servo PWM			*/
+
+extern st_TIMER1_INIT timer1_init;
+extern st_TIMER1_CompareMatch timer1_comparematch;
+extern st_TIMER1_CompareValue timer1_compareval;
+void main (void){
+
+	ADC_VidInit();									/*Initializes ADC*/
+	DIO_VidSetPinDirection(Port_A,Pin_4,input); 	/*ADC4 pin as input*/
+
+	DIO_VidSetPinDirection(Port_D,Pin_5,output); 				/*Timer1 OC1A output pin*/
+	GIE_VidDisable();											/* Disable All Maskable interrupts*/
+	TIMER1_VidInit(&timer1_init);								/*Initialize timer*/
+	TIMER1_VidSetCompareMatchOutputMode(&timer1_comparematch);	/*Set Timer1 Compare output mode*/
+	TIMER1_VidSetTopOVF(20000);									/*Set ICR1 TOP Value "OVERFLOW Value"*/
+	TIMER1_VidSetCompareVal(&timer1_compareval);				/*Set OCR1A Compare Match Value*/
+	static u16 Local_ADCReading;
+	static u32 Local_Mapped ;
+	while(1){
+			Local_ADCReading = ADC_u8ReadChannel(ADC_4);
+			Local_Mapped = ADC_VidMapping(Local_ADCReading,0,255,750,2500);
+			timer1_compareval.CompareMatchValue = Local_Mapped;
+			TIMER1_VidSetCompareVal(&timer1_compareval);
+			_delay_us(3000);
+			}
+}
+
+#endif

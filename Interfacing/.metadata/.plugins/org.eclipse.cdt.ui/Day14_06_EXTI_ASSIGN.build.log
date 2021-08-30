@@ -1,0 +1,20 @@
+00:36:34 **** Incremental Build of configuration Debug for project Day14_06_EXTI_ASSIGN ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Day14_06_EXTI_ASSIGN.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6400 bytes (19.5% Full)
+(.text + .data + .bootloader)
+
+Data:         13 bytes (0.6% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+00:36:34 Build Finished (took 190ms)
+

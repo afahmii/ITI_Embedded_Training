@@ -1,0 +1,36 @@
+#ifndef  _UART_INTERFACE_H_ 
+#define  _UART_INTERFACE_H_ 
+
+
+enum UART_INIT{
+	UART_Async,
+	USART_Sync,
+	UART_ParityDisable =0 ,
+	UART_PartiyEven = 2,
+	UART_PartiyOdd,
+	UART_OneStopBit = 0,
+	UART_TwoStopBits,
+	UART_Data_5Bit = 0,
+	UART_Data_6Bit,
+	UART_Data_7Bit,
+	UART_Data_8Bit,
+	UART_Data_9Bit = 7,
+	UART_Sampling_TX_Rising =0,
+	UART_Sampling_TX_Falling,
+	UART_DoubleSpeedEnable = 0,
+	UART_DoubleSpeedDisable,
+	UART_MultiProcessingDisable = 0,
+	UART_MultiProcessingEnable
+
+}en_uart;
+
+void UART_Vidinit(void);
+
+void UART_VidInterruptInit(void);
+
+void UART_VidTransmit(u8 Copy_u8Data);
+
+u8 UART_u8Receive(void);
+
+
+#endif	/* _UART_INTERFACE_H_*/

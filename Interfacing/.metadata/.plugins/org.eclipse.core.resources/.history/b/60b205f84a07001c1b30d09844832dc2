@@ -1,0 +1,92 @@
+#ifndef _Timer_INTERFACE_H_
+#define _Timer_INTERFACE_H_
+
+
+/*		Timer0_MODE		*/
+/*
+#define TIMER0_NORMAL 10
+#define TIMER0_CTC 20
+#define TIMER0_PWM 30
+#define TIMER0_PHASECORRECT 40
+*/
+/*		CTC OC0			*/
+/*
+#define TIMER0CTC_OC0_Disconnected 0
+#define TIMER0CTC_Toggle_OC0 1
+#define TIMER0CTC_Clear_OC0 2
+#define TIMER0CTC_Set_OC0 3
+*/
+/*		PWM OC0			*/
+/*
+#define TIMER0PWM_OC0_Disconnected 0
+#define TIMER0PWM_Clear_OC0_On_Compare_Match 2
+#define TIMER0PWM_Set_OC0_On_Compare_Match 3
+*/
+/*	PhaseCorrect OC0	 */
+/*
+#define TIMER0PC_OC0_Disconnected 0
+#define TIMER0PC_Clear_OC0_Upcounting 2
+#define TIMER0PC_Set_OC0_Upcounting 3
+*/
+
+
+typedef enum Timer0_init{
+	/*Timer0_mode*/
+	TIMER0_NORMAL,
+	TIMER0_CTC,
+	TIMER0_PWM ,
+	TIMER0_PHASECORRECT,
+	Disable = 0 ,
+	Enable,
+	/* CTC OC0*/
+	TIMER0CTC_OC0_Disconnected = 0,
+	TIMER0CTC_Toggle_OC0,
+	TIMER0CTC_Clear_OC0,
+	TIMER0CTC_Set_OC0,
+	/*PWM OC0	*/
+	TIMER0PWM_OC0_Disconnected = 0,
+	TIMER0PWM_Clear_OC0_On_Compare_Match = 2,
+	TIMER0PWM_Set_OC0_On_Compare_Match,
+	/*PhaseCorrect OC0*/
+	TIMER0PC_OC0_Disconnected = 0,
+	TIMER0PC_Clear_OC0_Upcounting  = 2,
+	TIMER0PC_Set_OC0_Upcounting,
+	/*Timer0_Interrupts*/
+	CTC_INTDisable = 0,
+	CTC_INTEnable,
+	PWM_INTDisbale  = 0,
+	PWM_INTEnable,
+	Normal_INTDisable = 0,
+	Normal_INTEnable,
+	PhaseCorrect_INTDisable = 0,
+	PhaseCorrect_INTEnable,
+	/*Prescaling*/
+	Stop_Timer =0,
+	No_Prescaling,
+	P_8,
+	P_64,
+	P_256,
+	P_1024
+
+}en_Timer;
+
+typedef struct TIMER_INIT{
+	u8 Timer_Mode;
+	u8 Interrupt_status;
+	u8 CompareMatchOutputMode;
+	u8 CompareMatchValue;
+	u8 Duty_Cycle;
+	u8 Prescaler;
+}st_TIMER;
+
+
+
+void TIMER0_VidInit(st_TIMER * TIMER0);
+void TIMER0_SetCallBack(void(*Copy_pCallBackFunction)(void));
+void TIMER0_VidDutyCycleSelector_Standard(u8 Copy_Local_Duty);
+void TIMER0_VidDutyCycleSelector_Reversed(u8 Copy_Local_Duty);
+void TIMER1_VidInit(void);
+void TIMER1_VidSetTopOF(u16 Copy_SetTop);
+void TIMER1_VidSetCompareVal(u16 Copy_SetCompareVal);
+
+#endif /*_Timer_INTERFACE_H_*/

@@ -1,0 +1,14 @@
+#ifndef  _UART_INTERFACE_H_ 
+#define  _UART_INTERFACE_H_ 
+
+
+void UART_Vidinit(void);
+
+void UART_VidInterruptInit(void)
+
+void UART_VidTransmit(u8 Copy_u8Data);
+
+u8 UART_u8Receive(void);
+
+
+#endif	/* _UART_INTERFACE_H_*/

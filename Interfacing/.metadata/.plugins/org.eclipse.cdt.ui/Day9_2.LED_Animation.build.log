@@ -1,0 +1,43 @@
+02:30:18 **** Incremental Build of configuration Debug for project Day9_2.LED_Animation ****
+make all 
+Building file: ../Main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"Main.d" -MT"Main.o" -c -o "Main.o" "../Main.c"
+../Main.c:11:1: warning: "F_CPU" redefined
+<command-line>: warning: this is the location of the previous definition
+In file included from ../Main.c:12:
+c:/imt_sdk_win_64/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util\delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../Main.c:16: warning: return type of 'main' is not 'int'
+Finished building: ../Main.c
+ 
+Building target: Day9_2.LED_Animation.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Day9_2.LED_Animation.map -mmcu=atmega16 -o "Day9_2.LED_Animation.elf"  ./Main.o   
+Finished building target: Day9_2.LED_Animation.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Day9_2.LED_Animation.elf  >"Day9_2.LED_Animation.lss"
+Finished building: Day9_2.LED_Animation.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Day9_2.LED_Animation.elf  "Day9_2.LED_Animation.hex"
+Finished building: Day9_2.LED_Animation.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 Day9_2.LED_Animation.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    3604 bytes (22.0% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+02:30:18 Build Finished (took 677ms)
+

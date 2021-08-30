@@ -1,0 +1,41 @@
+21:09:05 **** Incremental Build of configuration Debug for project Day14_06_EXTI ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:9:
+c:/imt_sdk_win_64/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:42: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: Day14_06_EXTI.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Day14_06_EXTI.map -mmcu=atmega32 -o "Day14_06_EXTI.elf"  ./MCAL/GIE/GIE_Program.o  ./MCAL/EXTI/EXTI_Program.o  ./MCAL/DIO/DIO_Program.o  ./main.o   
+Finished building target: Day14_06_EXTI.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Day14_06_EXTI.elf  >"Day14_06_EXTI.lss"
+Finished building: Day14_06_EXTI.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Day14_06_EXTI.elf  "Day14_06_EXTI.hex"
+Finished building: Day14_06_EXTI.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Day14_06_EXTI.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    2700 bytes (8.2% Full)
+(.text + .data + .bootloader)
+
+Data:          6 bytes (0.3% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+21:09:06 Build Finished (took 751ms)
+

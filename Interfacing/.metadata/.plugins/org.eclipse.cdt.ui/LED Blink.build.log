@@ -1,0 +1,18 @@
+01:43:46 **** Incremental Build of configuration Debug for project LED Blink ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:3:
+c:/imt_sdk_win_64/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util\delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../main.c:7: warning: return type of 'main' is not 'int'
+Finished building: ../main.c
+ 
+Building target: LED Blink.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,LED Blink.map -mmcu=atmega32 -o "LED Blink.elf"  ./main.o   
+avr-gcc.exe: Blink.map: No such file or directory
+make: *** [LED Blink.elf] Error 1
+
+01:43:47 Build Finished (took 314ms)
+

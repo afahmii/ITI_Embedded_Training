@@ -1,0 +1,14 @@
+#ifndef  _UART_PRIVATE_H_ 
+#define  _UART_PRIVATE_H_ 
+
+/*UDR*/
+#define UDR (*(volatile u8*)0x2c)
+/*UCSRA*/
+#define UCSRA  (*(volatile u8*)0x2B)
+/*UCSRB*/
+#define UCSRB (*(volatile u8*)0x2A)
+/*UCSRC*/
+#define UBRRL (*(volatile u8*)0x29)
+/*UBRRL-UBRRH*/
+
+#endif	/* _UART_PRIVATE_H_*/

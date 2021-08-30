@@ -1,0 +1,13 @@
+#ifndef _Timer_CONFIG_H_
+#define _Timer_CONFIG_H_
+
+
+#define TIMER0_MODE TIMER0_PWM
+#define COMPARE_MATCH_OUTPUT_MODE TIMER0PWM_Set_OC0_On_Compare_Match
+#define INTERRUPT_ENABLE_DISABLE Disable
+#define COMPARE_MATCH_VALUE 0
+#define DUTY_CYCLE 50
+#define PRESCALER_SECLECTOR P_1024
+
+
+#endif /*_Timer_CONFIG_H_*/

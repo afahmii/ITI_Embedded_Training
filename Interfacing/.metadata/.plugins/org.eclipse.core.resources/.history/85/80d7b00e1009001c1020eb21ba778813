@@ -1,0 +1,146 @@
+/*
+ * main.c
+
+ *
+ *  Created on: Aug 29, 2021
+ *      Author: AbdElRahman
+ */
+/*Global Libraries*/
+#include "LIB/Datatypes.h"
+#include "LIB/Bit_Operations.h"
+#include <util/delay.h>
+
+/*MCAL*/
+#include "MCAL/UART/UART_Interface.h"
+#include "MCAL/UART/UART_Private.h"
+#include "MCAL/DIO/DIO_Interface.h"
+
+#define Code_Select 2
+
+#if Code_Select == 1
+
+#define ArrLen 20 /*Select Array Length*/
+extern st_uart_init UART_INIT;
+extern st_uart_int UART_INT;
+void main (void){
+	/*Send myname as a string*/
+	u8 arr[] = {'A','B','D','E','L','R','A','H','M','A','N',NULL};
+	u8 arr1[ArrLen]= {0};				/*Array to store Received String*/
+	UART_VidTransmitterEnable();		/*Enable TX*/
+	UART_VidReceiverEnable();			/*Enable RX*/
+	UART_Vidinit(&UART_INIT);			/*UART INIT*/
+//UART_VidTransmit(UART_u8Receive());	/*Send the Received Char*/
+	UART_VidRecString(arr1,ArrLen);		/*Receive String in arr1*/
+	UART_VidSendString(arr1);			/*Display arr1*/
+	while(1){}
+}
+#elif Code_Select == 2
+
+s8 right =4 ,left =3;
+s8 first =0 ,last =7;
+s8 snake_c ;
+extern st_uart_init UART_INIT;
+extern st_uart_int UART_INT;
+void main ()
+{
+
+	/* Set Port_D as output */
+	DIO_VidSetPort_Direction(Port_D,output);
+	UART_VidTransmitterEnable();		/*Enable TX*/
+	UART_VidReceiverEnable();			/*Enable RX*/
+	UART_Vidinit(&UART_INIT);			/*UART INIT*/
+
+	while(1){
+		switch (UART_u8Receive()){
+			case 'a' :
+				u8 x = 255 ;
+				x ^= x;
+				DIO_VidSetPortVal(Port_D,x);
+				_delay_ms(300);
+				break;
+			case  'b':
+				for(u8 i = 0 ; i < 8 ; i++){
+					DIO_VidSetPortVal(Port_D, 0x00);
+					DIO_VidSetPinValue(Port_D,i,high);
+					_delay_ms(300);
+				}
+				break;
+			case 'c' :
+				for(s8 i = 7 ; i >= 0 ; i--){
+					DIO_VidSetPortVal(Port_D,0);
+					Set_Bit(Port_D , i);
+					_delay_ms(250);
+				}
+				break;
+			case 'd'  :
+				DIO_VidSetPortVal(Port_D,0);
+				_delay_ms(300);
+				for(u8 i = 0 ; i < 4 ; i++){
+					Set_Bit(Port_D , first);
+					Set_Bit(Port_D , last);
+					last --;
+					first++;
+					_delay_ms(300);
+				}
+				first = 0 ;
+				last = 7 ;
+				break;
+			case 'e'   :
+				DIO_VidSetPortVal(Port_D,0);
+				_delay_ms(300);
+				for(u8 i = 0 ; i < 4 ; i++){
+					Set_Bit(Port_D , right);
+					Set_Bit(Port_D , left);
+					left --;
+					right++;
+					_delay_ms(300);
+				}
+				right = 4 ;
+				left = 3 ;
+				break;
+			case 'f'   :
+				for(u8 i = 0 ; i < 8 ; i++){
+					DIO_VidSetPortVal(Port_D,0);
+					Set_Bit(Port_D , i);
+					_delay_ms(250);
+				}
+				for(s8 i = 7 ; i >= 0 ; i--){
+					DIO_VidSetPortVal(Port_D,0);
+					Set_Bit(Port_D , i);
+					_delay_ms(250);
+				}
+				break;
+			case 'g'       :
+				DIO_VidSetPortVal(Port_D,0);
+				for(u8 i = 0 ; i < 8 ; i++){
+					Set_Bit(Port_D , i);
+					_delay_ms(300);
+				}
+				break;
+			case 'h'    :
+				for(u8 i = 0 ; i < 4 ; i++)	{
+					DIO_VidSetPortVal(Port_D,0);
+					Set_Bit(Port_D , first);
+					Set_Bit(Port_D , last);
+					last --;
+					first++;
+					_delay_ms(300);
+				}
+				for(u8 i = 0 ; i < 4 ; i++){
+					DIO_VidSetPortVal(Port_D,0);
+					Set_Bit(Port_D , right);
+					Set_Bit(Port_D , left);
+					left --;
+					right++;
+					_delay_ms(300);
+				}
+				right = 4 ;
+				left = 3 ;
+				first = 0 ;
+				last = 7 ;
+				break;
+		}
+	}
+}
+
+#endif

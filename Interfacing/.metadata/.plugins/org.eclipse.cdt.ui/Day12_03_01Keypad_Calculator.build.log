@@ -1,0 +1,38 @@
+18:22:41 **** Incremental Build of configuration Debug for project Day12_03_01Keypad_Calculator ****
+make all 
+Building file: ../HAL/Keypad/Keypad_Program.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"HAL/Keypad/Keypad_Program.d" -MT"HAL/Keypad/Keypad_Program.o" -c -o "HAL/Keypad/Keypad_Program.o" "../HAL/Keypad/Keypad_Program.c"
+Finished building: ../HAL/Keypad/Keypad_Program.c
+ 
+Building target: Day12_03_01Keypad_Calculator.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Day12_03_01Keypad_Calculator.map -mmcu=atmega32 -o "Day12_03_01Keypad_Calculator.elf"  ./MCAL/DIO_Program.o  ./HAL/LCD/CLCD_Program.o  ./HAL/Keypad/Keypad_Program.o  ./main.o   
+Finished building target: Day12_03_01Keypad_Calculator.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Day12_03_01Keypad_Calculator.elf  >"Day12_03_01Keypad_Calculator.lss"
+Finished building: Day12_03_01Keypad_Calculator.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Day12_03_01Keypad_Calculator.elf  "Day12_03_01Keypad_Calculator.hex"
+Finished building: Day12_03_01Keypad_Calculator.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Day12_03_01Keypad_Calculator.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    9082 bytes (27.7% Full)
+(.text + .data + .bootloader)
+
+Data:         28 bytes (1.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+18:22:41 Build Finished (took 619ms)
+

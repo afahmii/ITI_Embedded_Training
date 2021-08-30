@@ -1,0 +1,37 @@
+/*
+ * main.c
+
+ *
+ *  Created on: Aug 29, 2021
+ *      Author: AbdElRahman
+ */
+/*Global Libraries*/
+#include "LIB/Datatypes.h"
+#include "LIB/Bit_Operations.h"
+#include <util/delay.h>
+
+/*MCAL*/
+#include "MCAL/UART/UART_Interface.h"
+#include "MCAL/UART/UART_Private.h"
+
+#define Code_Select 1
+
+#if Code_Select == 1
+
+#define ArrLen 20 /*Select Array Length*/
+extern st_uart_init UART_INIT;
+extern st_uart_int UART_INT;
+void main (void){
+	/*Send myname as a string*/
+	u8 arr[] = {'A','B','D','E','L','R','A','H','M','A','N',NULL};
+	u8 arr1[ArrLen]= {0};				/*Array to store Received String*/
+	UART_VidTransmitterEnable();		/*Enable TX*/
+	UART_VidReceiverEnable();			/*Enable RX*/
+	UART_Vidinit(&UART_INIT);			/*UART INIT*/
+//UART_VidTransmit(UART_u8Receive());	/*Send the Received Char*/
+	UART_VidRecString(arr1,ArrLen);		/*Receive String in arr1*/
+	UART_VidSendString(arr1);			/*Display arr1*/
+	while(1){}
+}
+
+#endif
